@@ -3,7 +3,7 @@
         {
             "location": "/",
             "text": "zend-expressive-authentication-session\n\n\n\n\n\n\nThis library provides a \nzend-expressive-authentication\n\nadapter that handles form-based username/password authentication credentials\nwhere the user details are subsequently stored in a session.\n\n\nInstallation\n\n\nRun the following to install this library:\n\n\n$ composer require zendframework/zend-expressive-authentication-session\n\n\n\nDocumentation\n\n\nDocumentation is \nin the doc tree\n, and can be compiled using \nmkdocs\n:\n\n\n$ mkdocs build\n\n\n\nYou may also \nbrowse the documentation online\n.",
-            "title": "Home"
+            "title": "zend-expressive-authentication-session"
         },
         {
             "location": "/#zend-expressive-authentication-session",
