@@ -11,7 +11,7 @@
 
     <title>Introduction - zend-expressive-authentication-session</title>
 
-    <link rel="stylesheet" href="../css/styles-e3f3751b65.css">
+    <link rel="stylesheet" href="../css/styles-f773ae3616.css">
 </head>
 <body id="page-top">
 
@@ -63,29 +63,31 @@
             
             
                 <div class="nav navbar-nav navbar-collapse visible-xs-block ">
-                    <div class="subnavigation hidden-print">
-    <h4 class="subnavigation__title">
-        <a href="..">zend-expressive-authentication-session</a>
-    </h4>
+                    
+    <div class="subnavigation hidden-print">
+        <h4 class="subnavigation__title">
+            <a href="..">zend-expressive-authentication-session</a>
+        </h4>
 
-    <h5 class="subnavigation__subtitle">Table of Contents</h5>
+        <h5 class="subnavigation__subtitle">Table of Contents</h5>
 
-    <ul class="subnavigation__list">
-        
+        <ul class="subnavigation__list">
             
-                <li class="subnavigation__list-item ">
-                    <a href=".." class="subnavigation__link">zend-expressive-authentication-session</a>
-                </li>
+                
+                    <li class="subnavigation__list-item ">
+                        <a href=".." class="subnavigation__link">zend-expressive-authentication-session</a>
+                    </li>
+                
             
-        
+                
+                    <li class="subnavigation__list-item subnavigation__list-item--active">
+                        <a href="./" class="subnavigation__link">Introduction</a>
+                    </li>
+                
             
-                <li class="subnavigation__list-item subnavigation__list-item--active">
-                    <a href="./" class="subnavigation__link">Introduction</a>
-                </li>
-            
-        
-    </ul>
-</div>
+        </ul>
+    </div>
+
                 </div>
             
 
@@ -157,6 +159,17 @@
 
     
     
+        <div class="toc">
+            <h6 class="toc__headline">In This Article</h6>
+            <ul class="toc__list">
+                
+                    <li class="toc__entry">
+                        <a href="#configuration" class="toc__link">Configuration</a>
+                    </li>
+                
+            </ul>
+        </div>
+    
 
 
     <h1 id="zend-expressive-authentication-session">zend-expressive-authentication-session</h1>
@@ -164,6 +177,47 @@
 adapter that handles form-based username/password authentication credentials
 where the user details are subsequently stored in a session.</p>
 <p>Documentation forthcoming...</p>
+<h2 id="configuration">Configuration</h2>
+<p>You will need to provide configuration for this module to work correctly. The
+following demonstrates:</p>
+<ul>
+<li>Mapping a custom <code>UserRepositoryInterface</code> implementation for use as a backend
+  to the functionality this authentication adapter provides.</li>
+<li>Mapping the <code>PhpSession</code> adapter as the <code>AuthenticationInterface</code>
+  implementation to use in your application.</li>
+<li>Providing configuration for this adapter, including custom field names for the
+  username and password, as well as a path in the application to which to redirect
+  when no valid credentials are present.</li>
+</ul>
+<pre class="codehilite"><code class="language-php">&lt;?php
+// in a config/autoload/*.global.php file:
+
+declare(strict_types=1);
+
+//use App\Infrastructure\Repository\UserRepository;
+//use App\Infrastructure\Repository\UserRepositoryFactory;
+use Zend\Expressive\Authentication\AuthenticationInterface;
+use Zend\Expressive\Authentication\Session\PhpSession;
+use Zend\Expressive\Authentication\UserRepositoryInterface;
+
+return [
+    'dependencies' =&gt; [
+        'aliases' =&gt; [
+            AuthenticationInterface::class =&gt; PhpSession::class,
+            UserRepositoryInterface::class =&gt; UserRepository::class,
+        ],
+
+        'factories' =&gt; [
+            UserRepository::class =&gt; UserRepositoryFactory::class,
+        ],
+    ],
+
+    'authentication' =&gt; [
+        'username' =&gt; null, // provide a custom field name for the username
+        'password' =&gt; null, // provide a custom field name for the password
+        'redirect' =&gt; '/login', // URI to which to redirect if no valid credentials present
+    ],
+];</code></pre>
 
 
 
@@ -208,29 +262,31 @@ where the user details are subsequently stored in a session.</p>
         <optgroup label="Components"></optgroup>
     </select>
 </div>
-                    <div class="subnavigation hidden-print">
-    <h4 class="subnavigation__title">
-        <a href="..">zend-expressive-authentication-session</a>
-    </h4>
+                    
+    <div class="subnavigation hidden-print">
+        <h4 class="subnavigation__title">
+            <a href="..">zend-expressive-authentication-session</a>
+        </h4>
 
-    <h5 class="subnavigation__subtitle">Table of Contents</h5>
+        <h5 class="subnavigation__subtitle">Table of Contents</h5>
 
-    <ul class="subnavigation__list">
-        
+        <ul class="subnavigation__list">
             
-                <li class="subnavigation__list-item ">
-                    <a href=".." class="subnavigation__link">zend-expressive-authentication-session</a>
-                </li>
+                
+                    <li class="subnavigation__list-item ">
+                        <a href=".." class="subnavigation__link">zend-expressive-authentication-session</a>
+                    </li>
+                
             
-        
+                
+                    <li class="subnavigation__list-item subnavigation__list-item--active">
+                        <a href="./" class="subnavigation__link">Introduction</a>
+                    </li>
+                
             
-                <li class="subnavigation__list-item subnavigation__list-item--active">
-                    <a href="./" class="subnavigation__link">Introduction</a>
-                </li>
-            
-        
-    </ul>
-</div>
+        </ul>
+    </div>
+
                 
             </div>
         </div>
@@ -293,7 +349,7 @@ where the user details are subsequently stored in a session.</p>
         var base_url = '..',
             siteName = 'zend-expressive-authentication-session';
     </script>
-    <script src="../js/scripts-dcbafde59f.js"></script>
+    <script src="../js/scripts-5141b2abfe.js"></script>
         <script src="../search/require.js"></script>
         <script src="../search/search.js"></script>
 
