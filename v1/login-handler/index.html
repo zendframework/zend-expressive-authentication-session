@@ -11,7 +11,7 @@
 
     <title>Login Handlers - zend-expressive-authentication-session</title>
 
-    <link rel="stylesheet" href="../../css/styles-3eb6fab3fb.css">
+    <link rel="stylesheet" href="../../css/styles-e95dab66f8.css">
 </head>
 <body id="page-top">
 
@@ -165,17 +165,23 @@
             <!-- content:begin -->
                 
                     <ol class="breadcrumb" role="navigation" aria-label="breadcrumbs navigation">
-  <li><a href="https://framework.zend.com/">Home</a></li>
-  <li><a href="https://docs.zendframework.com/">Docs</a></li>
-  <li><a href="../..">zend-expressive-authentication-session</a></li>
-  
+    <li><a href="https://framework.zend.com/">Home</a></li>
+
     
-      
-        <li>Tutorial</li>
-      
+        <li><a href="https://docs.zendframework.com/">Documentation</a></li>
+
+        
+            <li><a href="../..">zend-expressive-authentication-session</a></li>
+
+            
+                
+                    <li>Tutorial</li>
+                
+            
+
+            <li class="active">Login Handlers</li>
+        
     
-  
-  <li class="active">Login Handlers</li>
 </ol>
 
 
@@ -295,7 +301,9 @@ use Zend\Diactoros\Response\HtmlResponse;
 use Zend\Diactoros\Response\RedirectResponse;           // add this line
 use Zend\Expressive\Authentication\Session\PhpSession;  // add this line
 use Zend\Expressive\Session\SessionInterface;           // add this line
+use Zend\Expressive\Authentication\UserInterface;       // add this line
 use Zend\Expressive\Template\TemplateRendererInterface;
+
 
 class LoginHandler implements RequestHandlerInterface
 {
@@ -352,6 +360,11 @@ class LoginHandler implements RequestHandlerInterface
         SessionInterface $session,
         string $redirect
     ) : ResponseInterface {
+        // User session takes precedence over user/pass POST in
+        // the auth adapter so we remove the session prior
+        // to auth attempt
+        $session-&gt;unset(UserInterface::class);
+
         // Login was successful
         if ($this-&gt;adapter-&gt;authenticate($request)) {
             $session-&gt;unset(self::REDIRECT_ATTRIBUTE);

@@ -4,7 +4,7 @@
     
     <url>
      <loc>/</loc>
-     <lastmod>2018-09-27</lastmod>
+     <lastmod>2019-01-15</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
@@ -12,7 +12,7 @@
     
     <url>
      <loc>/v1/intro/</loc>
-     <lastmod>2018-09-27</lastmod>
+     <lastmod>2019-01-15</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
@@ -21,19 +21,19 @@
         
     <url>
      <loc>/v1/config/</loc>
-     <lastmod>2018-09-27</lastmod>
+     <lastmod>2019-01-15</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/v1/login-handler/</loc>
-     <lastmod>2018-09-27</lastmod>
+     <lastmod>2019-01-15</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/v1/requiring-authentication/</loc>
-     <lastmod>2018-09-27</lastmod>
+     <lastmod>2019-01-15</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
@@ -43,7 +43,7 @@
         
     <url>
      <loc>/intro/</loc>
-     <lastmod>2018-09-27</lastmod>
+     <lastmod>2019-01-15</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
