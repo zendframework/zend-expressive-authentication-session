@@ -278,7 +278,7 @@ the zend-expressive-authentication <code>AuthenticationMiddleware</code> so that
 exclude that particular path.</p>
 <p>As an example, you could do the following in the <code>config/pipeline.php</code> file,
 before the <code>RouteMiddleware</code> somewhere:</p>
-<pre class="codehilite"><code class="language-php">// Pipe in the session middleware
+<p> <pre class=codehilite><code class=language-php>// Pipe in the session middleware
 $app-&gt;pipe(Zend\Expressive\Session\SessionMiddleware::class);
 
 // Pipe a handler that checks to see if authentication is needed:
@@ -296,23 +296,21 @@ $app-&gt;pipe($factory-&gt;callable(
         );
         return $authenticationMiddleware-&gt;process($request, $handler);
     }
-));</code></pre>
-
+));</code></pre></p>
 <h2 id="requiring-authentication-for-subpaths-of-the-application">Requiring authentication for subpaths of the application</h2>
 <p>If you know all handlers under a given subpath of the application require
 authentication, you can use Stratigility's <a href="https://docs.zendframework.com/zend-stratigility/v3/api/#path">path segregation features</a>
 to add authentication.</p>
 <p>For example, consider the following within the <code>config/pipeline.php</code> file, which
 adds authentication to any path starting with <code>/admin</code>:</p>
-<pre class="codehilite"><code class="language-php">// Add this within the import section of the file:
+<p> <pre class=codehilite><code class=language-php>// Add this within the import section of the file:
 use function Zend\Stratigility\path;
 
 // Add this within the callback, before the routing middleware:
 $app-&gt;pipe(path('/admin', $factory-&gt;pipeline(
     Zend\Expressive\Session\SessionMiddleware::class,
     Zend\Expressive\Authentication\AuthenticationMiddleware::class
-)));</code></pre>
-
+)));</code></pre></p>
 <h2 id="requiring-authentication-for-individual-routes">Requiring authentication for individual routes</h2>
 <p>The most granular approach involves adding authentication to individual routes.
 In such cases, you will create a <a href="https://docs.zendframework.com/zend-expressive/v3/cookbook/route-specific-pipeline/">route-specific middleware
@@ -320,7 +318,7 @@ pipeline</a>.</p>
 <p>As an example, if we wanted authentication for each of the routes that use the
 path <code>/admin/users[/\d+]</code>, we could do the following within our
 <code>config/routes.php</code> file:</p>
-<pre class="codehilite"><code class="language-php">$app-&gt;get('/admin/users[/\d+]', [
+<p> <pre class=codehilite><code class=language-php>$app-&gt;get('/admin/users[/\d+]', [
     Zend\Expressive\Session\SessionMiddleware::class,
     Zend\Expressive\Authentication\AuthenticationMiddleware::class,
     App\Users\UsersHandler::class,
@@ -334,8 +332,7 @@ $app-&gt;post('/admin/users[/\d+]', [
     Zend\Expressive\Session\SessionMiddleware::class,
     Zend\Expressive\Authentication\AuthenticationMiddleware::class,
     App\Users\UpdateUserHandler::class,
-]);</code></pre>
-
+]);</code></pre></p>
 <p>Note that each pipeline contains both the session and authentication middleware!</p>
 
 
@@ -370,7 +367,7 @@ $app-&gt;post('/admin/users[/\d+]', [
     <div class="help-wanted">
         <p>
             Found a mistake or want to contribute to the documentation?
-            <a href="https://github.com/zendframework/zend-expressive-authentication-session/edit/master/docs/v1/requiring-authentication.md" target="_blank" class="help-wanted__link">
+            <a href="https://github.com/zendframework/zend-expressive-authentication-session/edit/master/docs/book/v1/requiring-authentication.md" target="_blank" class="help-wanted__link">
                 Edit this page on GitHub!
             </a>
         </p>
