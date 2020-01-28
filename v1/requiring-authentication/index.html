@@ -7,12 +7,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Username/password, session-backed authentication adapter for zend-expressive-authentication.">  
-    <link rel="canonical" href="https://docs.zendframework.com/zend-expressive-authentication-session/v1/requiring-authentication/">
+    <link rel="canonical" href="https://docs.zendframework.com/v1/requiring-authentication/">
     <link rel="shortcut icon" href="../../img/favicon.ico">
 
     <title>Handlers Requiring Authentication - zend-expressive-authentication-session - Zend Framework Docs</title>
 
-    <link rel="stylesheet" href="../../css/styles-5cfabd53ee.css">
+    <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body id="page-top">
 
@@ -181,9 +181,9 @@
     <div class="laminas-announcement">
     <div class="container">
         <div class="row">
-            <div class="col-xs-12">
-                Zend Framework transitions to the Linux Foundation. <a href="https://getlaminas.org">Learn More.</a>
-            </div>
+            <div class="col-xs-12"><strong>
+                This package has moved. Visit its replacement, <a href="https://docs.mezzio.dev/mezzio-authentication-session/">mezzio/mezzio-authentication-session.</a>
+            </strong></div>
         </div>
     </div>
 </div>
@@ -278,7 +278,7 @@ the zend-expressive-authentication <code>AuthenticationMiddleware</code> so that
 exclude that particular path.</p>
 <p>As an example, you could do the following in the <code>config/pipeline.php</code> file,
 before the <code>RouteMiddleware</code> somewhere:</p>
-<p> <pre class=codehilite><code class=language-php>// Pipe in the session middleware
+<pre><code class="language-php">// Pipe in the session middleware
 $app-&gt;pipe(Zend\Expressive\Session\SessionMiddleware::class);
 
 // Pipe a handler that checks to see if authentication is needed:
@@ -296,21 +296,25 @@ $app-&gt;pipe($factory-&gt;callable(
         );
         return $authenticationMiddleware-&gt;process($request, $handler);
     }
-));</code></pre></p>
+));
+</code></pre>
+
 <h2 id="requiring-authentication-for-subpaths-of-the-application">Requiring authentication for subpaths of the application</h2>
 <p>If you know all handlers under a given subpath of the application require
 authentication, you can use Stratigility's <a href="https://docs.zendframework.com/zend-stratigility/v3/api/#path">path segregation features</a>
 to add authentication.</p>
 <p>For example, consider the following within the <code>config/pipeline.php</code> file, which
 adds authentication to any path starting with <code>/admin</code>:</p>
-<p> <pre class=codehilite><code class=language-php>// Add this within the import section of the file:
+<pre><code class="language-php">// Add this within the import section of the file:
 use function Zend\Stratigility\path;
 
 // Add this within the callback, before the routing middleware:
 $app-&gt;pipe(path('/admin', $factory-&gt;pipeline(
     Zend\Expressive\Session\SessionMiddleware::class,
     Zend\Expressive\Authentication\AuthenticationMiddleware::class
-)));</code></pre></p>
+)));
+</code></pre>
+
 <h2 id="requiring-authentication-for-individual-routes">Requiring authentication for individual routes</h2>
 <p>The most granular approach involves adding authentication to individual routes.
 In such cases, you will create a <a href="https://docs.zendframework.com/zend-expressive/v3/cookbook/route-specific-pipeline/">route-specific middleware
@@ -318,7 +322,7 @@ pipeline</a>.</p>
 <p>As an example, if we wanted authentication for each of the routes that use the
 path <code>/admin/users[/\d+]</code>, we could do the following within our
 <code>config/routes.php</code> file:</p>
-<p> <pre class=codehilite><code class=language-php>$app-&gt;get('/admin/users[/\d+]', [
+<pre><code class="language-php">$app-&gt;get('/admin/users[/\d+]', [
     Zend\Expressive\Session\SessionMiddleware::class,
     Zend\Expressive\Authentication\AuthenticationMiddleware::class,
     App\Users\UsersHandler::class,
@@ -332,7 +336,9 @@ $app-&gt;post('/admin/users[/\d+]', [
     Zend\Expressive\Session\SessionMiddleware::class,
     Zend\Expressive\Authentication\AuthenticationMiddleware::class,
     App\Users\UpdateUserHandler::class,
-]);</code></pre></p>
+]);
+</code></pre>
+
 <p>Note that each pipeline contains both the session and authentication middleware!</p>
 
 
@@ -481,7 +487,7 @@ $app-&gt;post('/admin/users[/\d+]', [
             
             <div class="col-md-9">
                 <h4 class="footer__headline">Copyright</h4>
-                <p>&copy; 2006-2019 by <a href="https://www.zend.com/">Zend</a>, a <a href="https://www.roguewave.com/">Rogue Wave Company</a>.</p>
+                <p>&copy; 2006-2020 by <a href="https://www.zend.com/">Zend</a> by <a href="https://www.perforce.com/">Perforce</a>.</p>
             </div>
 
             
@@ -489,10 +495,10 @@ $app-&gt;post('/admin/users[/\d+]', [
                 <h4 class="footer__headline">Support</h4>
                 <ul class="support__list">
                     <li class="support__list-item">
-                        <a href="https://discourse.zendframework.com" class="support__link" title="Forum"><i class="fa fa-comments"></i></a>
+                        <a href="https://discourse.laminas.dev" class="support__link" title="Forum"><i class="fa fa-comments"></i></a>
                     </li>
                     <li class="support__list-item">
-                        <a href="https://zendframework-slack.herokuapp.com" class="support__link" title="Chat"><i class="fa fa-slack"></i></a>
+                        <a href="https://laminas.dev/chat/" class="support__link" title="Chat"><i class="fa fa-slack"></i></a>
                     </li>
                     <li class="support__list-item">
                         <a href="https://github.com/zendframework" class="support__link" title="Github"><i class="fa fa-github"></i></a>
@@ -500,27 +506,28 @@ $app-&gt;post('/admin/users[/\d+]', [
                     <li class="support__list-item">
                         <a href="https://twitter.com/zfdevteam" class="support__link" title="Twitter"><i class="fa fa-twitter"></i></a>
                     </li>
-                    <li class="support__list-item">
-                        <a href="https://tinyletter.com/mwopzend" class="support__link" title="Newsletter"><i class="fa fa-envelope"></i></a>
-                    </li>
-                    <li class="support__list-item">
-                        <a href="https://framework.zend.com/blog/feed-rss.xml" class="support__link" title="Blog feed"><i class="fa fa-rss"></i></a>
-                    </li>
-                    <li class="support__list-item">
-                        <a href="https://framework.zend.com/security/feed" class="support__link" title="Security feed"><i class="fa fa-rss-square"></i></a>
-                    </li>
                 </ul>
             </div>
         </div>
     </div>
 </footer>
 
+<nav class="cookie-bar navbar navbar-fixed-bottom navbar-default hidden">
+    <div class="container">
+        <p class="navbar-text">
+            We use cookies to allow you to dismiss dialogs such as the Laminas
+            Project notification.
+        </p>
+        <button type="button" class="cookie-button btn btn-default navbar-btn">Allow Cookies</button>
+    </div>
+</nav>
+
     <script>
         var base_url = '../..',
             siteName = 'zend-expressive-authentication-session';
     </script>
-    <script src="../../js/scripts-8d7ae56abf.js"></script>
-        <script src="../../search/main.js"></script>
+    <script src="/js/scripts.js"></script>
+    <script src="../../search/main.js"></script>
 
     
     <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
